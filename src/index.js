@@ -40,7 +40,7 @@ const encrypt = async ({ key, value }) => {
   return sodium.to_base64(encBytes, sodium.base64_variants.ORIGINAL)
 }
 
-module.exports = async ({ name, secret: value, owner, repo, token }) => {
+module.exports = async ({ name, value, owner, repo, token }) => {
   const githubAPI = createGithubAPI(token)
   const { key, key_id } = await githubAPI(
     `https://api.github.com/repos/${owner}/${repo}/actions/secrets/public-key`

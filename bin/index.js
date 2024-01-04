@@ -13,9 +13,9 @@ if (flags.help) {
   process.exit(0)
 }
 
-const required = ['name', 'secret', 'owner', 'repo']
+const required = ['name', 'value', 'owner', 'repo', 'token']
 const missing = required.filter(key => process.env[key] === undefined)
-if (missing.length > 0) throw new TypeError(`Missing flags: ${missing.join(', ')}`)
+if (missing.length > 0) { throw new TypeError(`Missing flags: ${missing.join(', ')}`) }
 
 Promise.resolve(require('..')(flags))
   .then(() => {
