@@ -21,7 +21,7 @@ await createSecret({
   owner: "Kikobeats",
   repo: "test",
   name: "MY_SECRET",
-  secret: "MY_VALUE"
+  value: "MY_VALUE"
 })
 ```
 
