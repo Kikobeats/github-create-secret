@@ -1,0 +1,11 @@
+Usage
+  $ github-create-secret <flags>
+
+Flags
+  --name    The name of the secret.
+  --owner   The account owner of the repository. The name is not case sensitive.
+  --repo    The name of the repository without the .git extension. The name is not case sensitive.
+  --value   Value for your secret.
+
+Examples
+  $ github-create-secret --owner Kikobeats --repo test --name MY_SECRET --value MY_VALUE
