@@ -2,7 +2,7 @@
   "name": "github-create-secret",
   "description": "Simplest way to create a GitHub secret.",
   "homepage": "https://github.com/kikobeats/github-create-secret",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "exports": {
     ".": "./cli/index.js"
   },
