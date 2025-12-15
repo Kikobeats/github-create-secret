@@ -3,8 +3,10 @@
 const mri = require('mri')
 
 const { _, ...flags } = mri(process.argv.slice(2), {
+  boolean: ['upsert'],
   default: {
-    token: process.env.GH_TOKEN || process.env.GITHUB_TOKEN
+    token: process.env.GH_TOKEN || process.env.GITHUB_TOKEN,
+    upsert: false
   }
 })
 
@@ -14,10 +16,12 @@ if (flags.help) {
 }
 
 const required = ['name', 'value', 'owner', 'repo', 'token']
-const missing = required.filter(key => process.env[key] === undefined)
-if (missing.length > 0) { throw new TypeError(`Missing flags: ${missing.join(', ')}`) }
+const missing = required.filter(key => flags[key] === undefined)
+if (missing.length > 0) {
+  throw new TypeError(`Missing flags: ${missing.join(', ')}`)
+}
 
-Promise.resolve(require('..')(flags))
+Promise.resolve(require('../src')(flags))
   .then(() => {
     process.exit(0)
   })

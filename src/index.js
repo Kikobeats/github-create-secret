@@ -23,6 +23,7 @@ const createGithubAPI =
         `${payload?.message} – See ${payload?.documentation_url}`
         )
         error.name = 'GitHubError'
+        error.status = response.status
         throw error
       }
 
@@ -40,8 +41,40 @@ const encrypt = async ({ key, value }) => {
   return sodium.to_base64(encBytes, sodium.base64_variants.ORIGINAL)
 }
 
-module.exports = async ({ name, value, owner, repo, token }) => {
+const checkSecretExists = async (githubAPI, owner, repo, name) => {
+  try {
+    const { secrets } = await githubAPI(
+      `https://api.github.com/repos/${owner}/${repo}/actions/secrets`
+    )
+    return secrets.some(secret => secret.name === name)
+  } catch (error) {
+    if (error.status === 404) {
+      return false
+    }
+    throw error
+  }
+}
+
+module.exports = async ({
+  name,
+  value,
+  owner,
+  repo,
+  token,
+  upsert = false
+}) => {
   const githubAPI = createGithubAPI(token)
+
+  const secretExists = await checkSecretExists(githubAPI, owner, repo, name)
+
+  if (secretExists && !upsert) {
+    const error = new Error(
+      `Secret "${name}" already exists. Set "upsert: true" to replace it.`
+    )
+    error.name = 'GitHubError'
+    throw error
+  }
+
   const { key, key_id } = await githubAPI(
     `https://api.github.com/repos/${owner}/${repo}/actions/secrets/public-key`
   )
