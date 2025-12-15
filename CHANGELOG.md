@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.1.0 (2025-12-15)
+
+
+### Features
+
+* add upsert ([423b2da](https://github.com/kikobeats/github-create-secret/commit/423b2da7e7341d5d664a031321fc05e5ab681a12))
+
 ### 1.0.8 (2025-12-15)
 
 ### 1.0.7 (2025-11-22)
