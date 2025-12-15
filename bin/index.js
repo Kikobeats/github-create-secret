@@ -15,14 +15,17 @@ if (flags.help) {
   process.exit(0)
 }
 
-const required = ['name', 'value', 'owner', 'repo', 'token']
+const required = ['name', 'owner', 'repo', 'token']
 const missing = required.filter(key => flags[key] === undefined)
 if (missing.length > 0) {
   throw new TypeError(`Missing flags: ${missing.join(', ')}`)
 }
 
 Promise.resolve(require('../src')(flags))
-  .then(() => {
+  .then(result => {
+    if (flags.value === undefined) {
+      console.log(result)
+    }
     process.exit(0)
   })
   .catch(error => {

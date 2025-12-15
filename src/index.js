@@ -67,6 +67,10 @@ module.exports = async ({
 
   const secretExists = await checkSecretExists(githubAPI, owner, repo, name)
 
+  if (value === undefined) {
+    return secretExists
+  }
+
   if (secretExists && !upsert) {
     const error = new Error(
       `Secret "${name}" already exists. Set "upsert: true" to replace it.`
