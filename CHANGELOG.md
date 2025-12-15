@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2025-12-15)
+
+
+### Features
+
+* check if value exists ([6a195b9](https://github.com/kikobeats/github-create-secret/commit/6a195b99e78e8d7abdfca4da6d3c9ba16da62c10))
+
 ## 1.1.0 (2025-12-15)
 
 
