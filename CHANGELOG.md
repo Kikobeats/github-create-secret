@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.1 (2025-12-16)
+
+
+### Bug Fixes
+
+* import ([53c96fe](https://github.com/kikobeats/github-create-secret/commit/53c96fee540dd6c9c4a66943cbe6f458957e6473))
+
 ## 1.2.0 (2025-12-15)
 
 
