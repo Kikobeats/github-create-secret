@@ -4,7 +4,7 @@
   "homepage": "https://github.com/kikobeats/github-create-secret",
   "version": "1.2.0",
   "exports": {
-    ".": "./cli/index.js"
+    ".": "./src/index.js"
   },
   "bin": {
     "github-create-secret": "bin/index.js"
